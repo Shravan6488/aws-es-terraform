@@ -4,6 +4,10 @@ Terraform module to create [Amazon Elasticsearch Service](https://aws.amazon.com
 
 Amazon Elasticsearch Service is a fully managed service that makes it easy to deploy, operate, and scale Elasticsearch clusters in the AWS Cloud. Elasticsearch is a popular open-source search and analytics engine for use cases such as log analytics, real-time application monitoring, and clickstream analysis. With Amazon ES, you get direct access to the Elasticsearch APIs; existing code and applications work seamlessly with the service.
 
+## Prerequsites
+
+- AWS Account
+
 ## Examples
 
 Check the [examples](/examples/) folder where you can see how to configure a public ES cluster, and another example showing how to set it with VPC options.
@@ -11,6 +15,7 @@ Check the [examples](/examples/) folder where you can see how to configure a pub
 ## Usage
 
 You can use this module to create your Amazon ES cluster by defining each parameters blocks as follows:
+Replace the kms key id with your kms id.
 
 ```
 module "aws_es" {
