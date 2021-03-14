@@ -177,3 +177,47 @@ module "aws_es" {
 | kibana\_endpoint | Domain-specific endpoint for kibana without https scheme |
 | vpc\_options\_availability\_zones | If the domain was created inside a VPC, the names of the availability zones the configured subnet\_ids were created inside |
 | vpc\_options\_vpc\_id | If the domain was created inside a VPC, the ID of the VPC |
+
+
+###Some answers we are looking:
+1. What did you choose to automate the provisioning and bootstrapping of the instance? Why?
+###Answer - I used Terraform for provisioning the AWS resource. 
+          - I used native Elasticsearch service in AWS.
+
+2. How did you choose to secure ElasticSearch? Why?
+###Question Use SSL/TLS to communicate with AWS resources
+
+
+3. How would you monitor this instance? What metrics would you monitor?
+###Answer - Using Cloudwatch i monitor below metrics.
+               - Cluster Metrics
+                 - Nodes
+                 - ClusterStatus.red
+                 - ClusterStatus.yellow
+                 - ClusterStatus.green
+                 - CPUUtilization
+                 - FreeStorageSpace
+                 - JVMMemoryPressure
+                 - KMSKeyError
+                 - KMSKeyInaccessible
+                 - InvalidHostHeaderRequests
+                 - ElasticsearchRequests
+            - Master Node Metrics
+            - Volume Metrics
+
+4. Could you extend your solution to launch a secure cluster of ElasticSearch nodes? What
+would need to change to support this use case?
+###Answer - Use SSL/TLS to communicate with AWS resources
+Set up API and user activity logging with AWS CloudTrail.
+Use advanced managed security services such as Amazon Macie, which assists in discovering and securing personal data that is stored in Amazon S3.
+Use AWS encryption solutions, along with all default security controls within AWS services.
+Security at the index, document, and field level
+
+5. Could you extend your solution to replace a running ElasticSearch instance with little or no
+downtime? How?
+###Answer As the cluster is High availble solution we can replace the nodes with rolling updates.
+Another solution is to increase the nodes in the terraorm main.tf file and run with zero downtime.
+
+6. Was it a priority to make your code well structured, extensible, and reusable?
+###Answer - Yes it is priority to make our code Well Structured.Later,we can modify our code as per our requirements.
+          - With Terraform, you can put your code inside of a Terraform module and reuse that module in multiple places throughout your code
